@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{7D6051C1-0B71-4A78-BEB1-338B3C2FEA8B}</ProjectGuid>
+        <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>TestSuite</RootNamespace>
+        <AssemblyName>TestSuite</AssemblyName>
+        <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Xml" />
+        <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
+        </Reference>
+        <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>..\packages\xunit.assert.2.1.0\lib\dotnet\xunit.assert.dll</HintPath>
+        </Reference>
+        <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>..\packages\xunit.extensibility.core.2.1.0\lib\dotnet\xunit.core.dll</HintPath>
+        </Reference>
+        <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="FileSerializers\Tests.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="TextSerializers" />
+      <Folder Include="TextSerializers.Newtonsoft" />
+      <Folder Include="TextSerializers.Unity" />
+      <Folder Include="TextSerializers.ZeroFormatter" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\FileSerializers.Interfaces\FileSerializers.Interfaces.csproj">
+        <Project>{ceae32f5-1bab-4764-9a0a-3eaf0503ff8a}</Project>
+        <Name>FileSerializers.Interfaces</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\FileSerializers\FileSerializers.csproj">
+        <Project>{de06231a-ea7b-411c-96fe-c3bdc72d34b7}</Project>
+        <Name>FileSerializers</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\TextSerializers.Interfaces\TextSerializers.Interfaces.csproj">
+        <Project>{f7ff6571-60b8-4cfb-8573-0f00e4f18312}</Project>
+        <Name>TextSerializers.Interfaces</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\TextSerializers.Newtonsoft\TextSerializers.Newtonsoft.csproj">
+        <Project>{4c259c5a-e2a2-4b10-af68-af6441cbf6fb}</Project>
+        <Name>TextSerializers.Newtonsoft</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\TextSerializers.Unity\TextSerializers.Unity.csproj">
+        <Project>{0dca08e2-fb62-481c-b028-146ed8b42eaa}</Project>
+        <Name>TextSerializers.Unity</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\TextSerializers.ZeroFormatter\TextSerializers.ZeroFormatter.csproj">
+        <Project>{e425f553-e059-4a11-9de6-b48cf4fe1d80}</Project>
+        <Name>TextSerializers.ZeroFormatter</Name>
+      </ProjectReference>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+</Project>

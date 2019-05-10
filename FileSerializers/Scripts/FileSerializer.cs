@@ -1,7 +1,7 @@
 ﻿using System.IO;
+using BRM.DebugAdapter.Interfaces;
 using BRM.FileSerializers.Interfaces;
 using BRM.TextSerializers.Interfaces;
-using BRM.TheDebugAdapter.Interfaces.V1;
 
 namespace BRM.FileSerializers
 {
@@ -67,7 +67,7 @@ namespace BRM.FileSerializers
                 }
                 else
                 {
-                    _debugger.LogWarningFormat("You may be attempting to {0} a file not supported by the member TextHandler. Type{1}, FileExtension:{2}", operation, _textHandler.SerializationType.ToString(), extension);
+                    _debugger.LogWarningFormat("You may be attempting to {0} a file not supported by the member TextHandler. Type{1}, FileExtension:{2}", operation, _textHandler.SerializationType, extension);
                 }
             }
             return isValid;
