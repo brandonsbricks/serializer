@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BRM.TextSerializers
 {
-    public class NewtonsoftJsonHandler : ISerializeText
+    public sealed class NewtonsoftJsonHandler : ISerializeText
     {
         JsonSerializerSettings _settings = new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
         public T AsObject<T>(string json)

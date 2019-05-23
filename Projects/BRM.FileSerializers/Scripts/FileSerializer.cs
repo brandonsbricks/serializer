@@ -9,7 +9,7 @@ namespace BRM.FileSerializers
     /// <summary>
     /// Serializes/Deserializes text for disk files
     /// </summary>
-    public class FileSerializer : IReadFiles, IWriteFiles
+    public sealed class FileSerializer : IReadFiles, IWriteFiles
     {
         private ISerializeText _serializer;
         private IDebug _debugger;

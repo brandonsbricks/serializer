@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using BRM.DebugAdapter;
 using BRM.DebugAdapter.Interfaces;
@@ -21,7 +20,6 @@ namespace BRM.SerializationServices.TestSuite
             IDebug debugger = new ConsoleDebugger();
             ISerializeText jsonSerializer = new NewtonsoftJsonHandler();
             FileSerializer serializer = new FileSerializer(jsonSerializer, debugger);
-            List<int> ints = new List<int>{3,4,5,6};
             var finalPath = Path.Combine(Environment.CurrentDirectory, relativePath);
             if (File.Exists(finalPath))
             {
@@ -29,10 +27,10 @@ namespace BRM.SerializationServices.TestSuite
             }
 
             //write / read
-            serializer.Write(finalPath, ints);
+            serializer.Write(finalPath, toSerialize);
             Assert.True(File.Exists(finalPath));
-            var sourceString = jsonSerializer.AsString(ints);
-            var deserialized = serializer.Read<List<int>>(finalPath);
+            var sourceString = jsonSerializer.AsString(toSerialize);
+            var deserialized = serializer.Read<string>(finalPath);
             var comparisonString = jsonSerializer.AsString(deserialized);
             
             //compare results

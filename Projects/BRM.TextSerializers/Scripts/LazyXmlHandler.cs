@@ -4,7 +4,7 @@ using BRM.TextSerializers.Interfaces;
 
 namespace BRM.TextSerializers
 {
-    public class LazySystemXmlHandler : ISerializeText
+    public sealed class LazySystemXmlHandler : ISerializeText
     {
         public T AsObject<T>(string xmlString)
         {

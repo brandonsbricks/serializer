@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace BRM.TextSerializers
 {
-    public class UnityJsonHandler : ISerializeText
+    public sealed class UnityJsonHandler : ISerializeText
     {
         public T AsObject<T>(string json)
         {

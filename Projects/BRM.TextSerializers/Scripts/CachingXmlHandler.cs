@@ -6,7 +6,7 @@ using BRM.TextSerializers.Interfaces;
 
 namespace BRM.TextSerializers
 {
-    public class CachingXmlHandler : ISerializeText
+    public sealed class CachingXmlHandler : ISerializeText
     {
         private static Dictionary<Type, XmlSerializer> _serializerCache = new Dictionary<Type, XmlSerializer>(); 
         public void CacheSerializer<T>()

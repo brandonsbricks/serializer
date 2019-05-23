@@ -4,7 +4,7 @@ using ZeroFormatter;
 
 namespace BRM.TextSerializers
 {
-    public class ZeroJsonHandler : ISerializeText
+    public sealed class ZeroJsonHandler : ISerializeText
     {
         public T AsObject<T>(string json)
         {
