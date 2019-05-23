@@ -27,11 +27,11 @@ namespace BRM.FileSerializers
             _debugger = debugger;
         }
 
-        public TModel Read<TModel>(string filePath) where TModel : class
+        public TModel Read<TModel>(string filePath)
         {
             if (!IsValid(filePath, "read"))
             {
-                return null;
+                return default(TModel);
             }
             var model = default(TModel);
             using (var stream = new FileStream(filePath, FileMode.Open))
@@ -43,7 +43,7 @@ namespace BRM.FileSerializers
             return model;
         }
 
-        public void Write<TModel>(string filePath, TModel model) where TModel : class
+        public void Write<TModel>(string filePath, TModel model)
         {
             if (!IsValid(filePath, "write"))
             {

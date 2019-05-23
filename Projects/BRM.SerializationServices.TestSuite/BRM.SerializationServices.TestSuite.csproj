@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="..\..\packages\xunit.runner.console.2.4.1\build\xunit.runner.console.props" Condition="Exists('..\..\packages\xunit.runner.console.2.4.1\build\xunit.runner.console.props')" />
     <Import Project="..\..\packages\xunit.core.2.4.1\build\xunit.core.props" Condition="Exists('..\..\packages\xunit.core.2.4.1\build\xunit.core.props')" />
     <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
     <PropertyGroup>
@@ -11,7 +12,7 @@
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>BRM.SerializationServices.TestSuite</RootNamespace>
         <AssemblyName>BRM.SerializationServices.TestSuite</AssemblyName>
-        <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+        <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -34,6 +35,12 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="BRM.DebugAdapter.ConsoleDebugger, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\..\DebugAdapter\Builds\BRM.DebugAdapter.ConsoleDebugger.dll</HintPath>
+        </Reference>
+        <Reference Include="BRM.DebugAdapter.Interfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\..\DebugAdapter\Builds\BRM.DebugAdapter.Interfaces.dll</HintPath>
+        </Reference>
         <Reference Include="System" />
         <Reference Include="System.ComponentModel.Composition" />
         <Reference Include="System.Core" />
@@ -80,6 +87,20 @@
     <ItemGroup>
       <Analyzer Include="..\..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\BRM.FileSerializers\BRM.FileSerializers.csproj">
+        <Project>{de06231a-ea7b-411c-96fe-c3bdc72d34b7}</Project>
+        <Name>BRM.FileSerializers</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\BRM.TextSerializers.Interfaces\BRM.TextSerializers.Interfaces.csproj">
+        <Project>{f7ff6571-60b8-4cfb-8573-0f00e4f18312}</Project>
+        <Name>BRM.TextSerializers.Interfaces</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\BRM.TextSerializers.Newtonsoft\BRM.TextSerializers.Newtonsoft.csproj">
+        <Project>{4c259c5a-e2a2-4b10-af68-af6441cbf6fb}</Project>
+        <Name>BRM.TextSerializers.Newtonsoft</Name>
+      </ProjectReference>
+    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
       <PropertyGroup>
@@ -87,6 +108,7 @@
       </PropertyGroup>
       <Error Condition="!Exists('..\..\packages\xunit.core.2.4.1\build\xunit.core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\xunit.core.2.4.1\build\xunit.core.props'))" />
       <Error Condition="!Exists('..\..\packages\xunit.core.2.4.1\build\xunit.core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\xunit.core.2.4.1\build\xunit.core.targets'))" />
+      <Error Condition="!Exists('..\..\packages\xunit.runner.console.2.4.1\build\xunit.runner.console.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\xunit.runner.console.2.4.1\build\xunit.runner.console.props'))" />
     </Target>
     <Import Project="..\..\packages\xunit.core.2.4.1\build\xunit.core.targets" Condition="Exists('..\..\packages\xunit.core.2.4.1\build\xunit.core.targets')" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
