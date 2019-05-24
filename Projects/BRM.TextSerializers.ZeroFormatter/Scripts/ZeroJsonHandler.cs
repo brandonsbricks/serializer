@@ -6,9 +6,10 @@ namespace BRM.TextSerializers
 {
     public sealed class ZeroJsonHandler : ISerializeText
     {
+        public Encoding Encoding = Encoding.UTF8;
         public T AsObject<T>(string json)
         {
-            var bytes = Encoding.UTF8.GetBytes(json);
+            var bytes = Encoding.GetBytes(json);
             var obj = ZeroFormatterSerializer.Deserialize<T>(bytes);
             return obj;
         }
@@ -16,10 +17,10 @@ namespace BRM.TextSerializers
         /// <summary>
         /// Pretty not supported
         /// </summary>        
-        public string AsString<T>(T serializableInstance, bool prettyPrint=true)
+        public string AsString<T>(T serializableInstance, bool prettyPrint = true)
         {
             var bytes = ZeroFormatterSerializer.Serialize(serializableInstance);
-            var json = Encoding.UTF8.GetString(bytes);
+            var json = Encoding.GetString(bytes);
             return json;
         }
 

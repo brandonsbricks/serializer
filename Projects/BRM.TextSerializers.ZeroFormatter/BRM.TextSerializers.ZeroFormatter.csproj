@@ -9,7 +9,7 @@
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>BRM.TextSerializers.ZeroFormatter</RootNamespace>
         <AssemblyName>BRM.TextSerializers.ZeroFormatter</AssemblyName>
-        <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+        <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -47,7 +47,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="ZeroJsonHandler.cs" />
+        <Compile Include="Scripts\ZeroJsonHandler.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\BRM.TextSerializers.Interfaces\BRM.TextSerializers.Interfaces.csproj">
@@ -64,6 +64,10 @@
         <_dll Include="$(TargetDir)\$(ProjectName).dll" />
         <_pdb Include="$(TargetDir)\$(ProjectName).pdb" />
     </ItemGroup>
+    <Target Name="BeforeBuild" Condition=" '$(Configuration)' == 'Release' ">
+        <Delete Files="@(_dll)" />
+        <Delete Files="@(_pdb)" />
+    </Target>
     <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release' ">
         <Copy SourceFiles="@(_dll)" DestinationFolder="$(SolutionDir)\Builds\" ContinueOnError="true" SkipUnchangedFiles="false" />
         <Copy SourceFiles="@(_pdb)" DestinationFolder="$(SolutionDir)\Builds\" ContinueOnError="true" SkipUnchangedFiles="false" />
