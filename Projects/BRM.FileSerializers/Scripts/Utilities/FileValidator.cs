@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using BRM.TextSerializers.Interfaces;
+using BRM.DataSerializers.Interfaces;
 
 namespace BRM.FileSerializers
 {

@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
-using BRM.TextSerializers.Interfaces;
+using BRM.DataSerializers.Interfaces;
 
 namespace BRM.TextSerializers
 {
-    public sealed class CachingXmlHandler : ISerializeText
+    public sealed class SystemXmlSerializerCaching : ISerializeText
     {
-        private static Dictionary<Type, XmlSerializer> _serializerCache = new Dictionary<Type, XmlSerializer>(); 
+        public SerializationType SerializationType => SerializationType.Xml;
+        private static Dictionary<Type, XmlSerializer> _serializerCache = new Dictionary<Type, XmlSerializer>();
+        
         public void CacheSerializer<T>()
         {
             XmlSerializer serializer;
@@ -41,13 +44,11 @@ namespace BRM.TextSerializers
         {
             CacheSerializer<T>();
             XmlSerializer serializer = _serializerCache[typeof(T)];
-            using (var stringWriter = new System.IO.StringWriter())
+            using (var stringWriter = new StringWriter())
             {
                 serializer.Serialize(stringWriter, serializableInstance);
                 return stringWriter.ToString();
             }
         }
-
-        public SerializationType SerializationType => SerializationType.Xml;
     }
 }

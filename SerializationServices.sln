@@ -9,15 +9,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRM.TextSerializers.ZeroFor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRM.FileSerializers", "Projects\BRM.FileSerializers\BRM.FileSerializers.csproj", "{DE06231A-EA7B-411C-96FE-C3BDC72D34B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRM.TextSerializers.Interfaces", "Projects\BRM.TextSerializers.Interfaces\BRM.TextSerializers.Interfaces.csproj", "{F7FF6571-60B8-4CFB-8573-0F00E4F18312}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRM.DataSerializers.Interfaces", "Projects\BRM.DataSerializers.Interfaces\BRM.DataSerializers.Interfaces.csproj", "{F7FF6571-60B8-4CFB-8573-0F00E4F18312}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRM.TextSerializers", "Projects\BRM.TextSerializers\BRM.TextSerializers.csproj", "{04252224-A8F8-4635-B6B6-7B33A8DBC33F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRM.TextSerializers.System", "Projects\BRM.TextSerializers.System\BRM.TextSerializers.System.csproj", "{04252224-A8F8-4635-B6B6-7B33A8DBC33F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRM.TextSerializers.Newtonsoft", "Projects\BRM.TextSerializers.Newtonsoft\BRM.TextSerializers.Newtonsoft.csproj", "{4C259C5A-E2A2-4B10-AF68-AF6441CBF6FB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRM.TextSerializers.Unity", "Projects\BRM.TextSerializers.Unity\BRM.TextSerializers.Unity.csproj", "{0DCA08E2-FB62-481C-B028-146ED8B42EAA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRM.SerializationServices.TestSuite", "Projects\BRM.SerializationServices.TestSuite\BRM.SerializationServices.TestSuite.csproj", "{7D6051C1-0B71-4A78-BEB1-338B3C2FEA8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRM.BinarySerializers.System", "Projects\BRM.BinarySerializers.System\BRM.BinarySerializers.System.csproj", "{90338BA6-38F7-4741-B10F-B919870E4506}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,8 @@ Global
 		{7D6051C1-0B71-4A78-BEB1-338B3C2FEA8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D6051C1-0B71-4A78-BEB1-338B3C2FEA8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D6051C1-0B71-4A78-BEB1-338B3C2FEA8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90338BA6-38F7-4741-B10F-B919870E4506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90338BA6-38F7-4741-B10F-B919870E4506}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,14 +2,14 @@
 using System.Text;
 using BRM.DebugAdapter.Interfaces;
 using BRM.FileSerializers.Interfaces;
-using BRM.TextSerializers.Interfaces;
+using BRM.DataSerializers.Interfaces;
 
 namespace BRM.FileSerializers
 {
     /// <summary>
     /// Serializes/Deserializes text for disk files
     /// </summary>
-    public sealed class FileSerializer : IReadFiles, IWriteFiles
+    public sealed class TextFileSerializer : IReadFiles, IWriteFiles
     {
         private ISerializeText _serializer;
         private IDebug _debugger;
@@ -21,7 +21,7 @@ namespace BRM.FileSerializers
         /// eg: jsonHandlers must be used for Reading/Writing .json files
         /// eg: xmlHandlers must be used for Reading/Writing .xml files
         /// </summary>
-        public FileSerializer(ISerializeText serializer, IDebug debugger)
+        public TextFileSerializer(ISerializeText serializer, IDebug debugger)
         {
             _serializer = serializer;
             _debugger = debugger;
@@ -31,7 +31,7 @@ namespace BRM.FileSerializers
         {
             if (!IsValid(filePath, "read"))
             {
-                return default(TModel);
+                return default;
             }
             var model = default(TModel);
             using (var stream = new FileStream(filePath, FileMode.Open))

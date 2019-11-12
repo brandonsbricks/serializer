@@ -1,9 +1,9 @@
-﻿using BRM.TextSerializers.Interfaces;
+﻿using BRM.DataSerializers.Interfaces;
 using UnityEngine;
 
 namespace BRM.TextSerializers
 {
-    public sealed class UnityJsonHandler : ISerializeText
+    public sealed class UnityJsonSerializer : ISerializeText
     {
         public T AsObject<T>(string json)
         {

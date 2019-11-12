@@ -1,10 +1,10 @@
 ﻿using System.Text;
-using BRM.TextSerializers.Interfaces;
+using BRM.DataSerializers.Interfaces;
 using ZeroFormatter;
 
 namespace BRM.TextSerializers
 {
-    public sealed class ZeroJsonHandler : ISerializeText
+    public sealed class ZeroJsonSerializer : ISerializeText
     {
         public Encoding Encoding = Encoding.UTF8;
         public T AsObject<T>(string json)

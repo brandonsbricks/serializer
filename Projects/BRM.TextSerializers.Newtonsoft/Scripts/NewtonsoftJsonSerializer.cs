@@ -1,9 +1,9 @@
-﻿using BRM.TextSerializers.Interfaces;
+﻿using BRM.DataSerializers.Interfaces;
 using Newtonsoft.Json;
 
 namespace BRM.TextSerializers
 {
-    public sealed class NewtonsoftJsonHandler : ISerializeText
+    public sealed class NewtonsoftJsonSerializer : ISerializeText
     {
         JsonSerializerSettings _settings = new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
         public T AsObject<T>(string json)

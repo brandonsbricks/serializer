@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BRM.TextSerializers.Interfaces")]
+[assembly: AssemblyTitle("BRM.BinarySerializers.System")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BRM.TextSerializers.Interfaces")]
+[assembly: AssemblyProduct("BRM.BinarySerializers.System")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("F7FF6571-60B8-4CFB-8573-0F00E4F18312")]
+[assembly: Guid("90338BA6-38F7-4741-B10F-B919870E4506")]
 
 // Version information for an assembly consists of the following four values:
 //

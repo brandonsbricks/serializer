@@ -1,11 +1,14 @@
-﻿using System.Xml;
+﻿using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
-using BRM.TextSerializers.Interfaces;
+using BRM.DataSerializers.Interfaces;
 
 namespace BRM.TextSerializers
 {
-    public sealed class LazySystemXmlHandler : ISerializeText
+    public sealed class SystemXmlSerializerLazy : ISerializeText
     {
+        public SerializationType SerializationType => SerializationType.Xml;
+        
         public T AsObject<T>(string xmlString)
         {
             T obj = default(T);
@@ -22,13 +25,11 @@ namespace BRM.TextSerializers
         public string AsString<T>(T serializableInstance, bool prettyPrint = false)
         {
             var serializer = new XmlSerializer(typeof(T));
-            using (var stringWriter = new System.IO.StringWriter())
+            using (var stringWriter = new StringWriter())
             {
                 serializer.Serialize(stringWriter, serializableInstance);
                 return stringWriter.ToString();
             }
         }
-
-        public SerializationType SerializationType => SerializationType.Xml;
     }
 }

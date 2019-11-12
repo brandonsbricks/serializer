@@ -3,7 +3,7 @@
     public interface IReadFiles
     {
         /// <summary>
-        /// Deserializes text to object of type <typeparamref name="TModel"/> located at <paramref name="filePath"/>
+        /// Deserializes data located at <paramref name="filePath"/> to object of type <typeparamref name="TModel"/>
         /// </summary>
         TModel Read<TModel>(string filePath);
     }

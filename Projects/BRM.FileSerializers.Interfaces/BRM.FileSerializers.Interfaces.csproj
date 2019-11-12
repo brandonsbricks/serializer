@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BRM.FileSerializers.Interfaces</RootNamespace>
     <AssemblyName>BRM.FileSerializers.Interfaces</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -43,14 +43,13 @@
     <Compile Include="Scripts\IWriteFiles.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-
   <ItemGroup>
     <_dll Include="$(TargetDir)\$(ProjectName).dll" />
     <_pdb Include="$(TargetDir)\$(ProjectName).pdb" />
   </ItemGroup>
   <Target Name="BeforeBuild" Condition=" '$(Configuration)' == 'Release' ">
-    <Delete Files="@(_dll)"/>
-    <Delete Files="@(_pdb)"/>
+    <Delete Files="@(_dll)" />
+    <Delete Files="@(_pdb)" />
   </Target>
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release' ">
     <Copy SourceFiles="@(_dll)" DestinationFolder="$(SolutionDir)\Builds\" ContinueOnError="true" SkipUnchangedFiles="false" />
