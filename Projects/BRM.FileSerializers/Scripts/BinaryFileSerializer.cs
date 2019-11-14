@@ -16,11 +16,17 @@ namespace BRM.FileSerializers
             _debugger = debugger;
         }
         
+        /// <summary>
+        /// If no file exists at <paramref name="filePath"/>, the default value for <typeparamref name="TModel"/> is used
+        /// <para>
+        /// Otherwise, opens the file located at <paramref name="filePath"/> and deserializes the data to type <typeparamref name="TModel"/>
+        /// </para>
+        /// </summary>
         public TModel Read<TModel>(string filePath)
         {
             if (!File.Exists(filePath))
             {
-                _debugger.LogErrorFormat("No file found at the filePath:{0}", filePath);
+                _debugger.LogWarningFormat("No file found at the filePath:{0}", filePath);
                 return default;
             }
             using (var stream = new FileStream(filePath, FileMode.Open))
@@ -31,10 +37,16 @@ namespace BRM.FileSerializers
             }
         }
 
+        /// <summary>
+        /// Serializes <paramref name="model"/> to binary and writes to <paramref name="filePath"/>
+        /// <para>
+        /// Creates the containing directory if none already exists for <paramref name="filePath"/>
+        /// </para>
+        /// </summary>
         public void Write<TModel>(string filePath, TModel model)
         {
             SafeCreateDirectory(filePath);
-            using (var stream = new FileStream(filePath, FileMode.CreateNew))
+            using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 var data = _serializer.AsBinary(model);
                 stream.Write(data, 0, data.Length);
