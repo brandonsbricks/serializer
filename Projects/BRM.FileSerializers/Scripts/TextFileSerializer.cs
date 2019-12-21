@@ -49,7 +49,9 @@ namespace BRM.FileSerializers
             {
                 return;
             }
-            using (var stream = new FileStream(filePath, FileMode.CreateNew))
+
+            FileUtilities.SafeCreateDirectory(filePath);
+            using (var stream = new FileStream(filePath, FileMode.Create))
             using (var writer = new StreamWriter(stream, Encoding))
             {
                 string json = _serializer.AsString(model);

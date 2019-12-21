@@ -22,5 +22,14 @@ namespace BRM.FileSerializers
             }
             return uniquePath;
         }
+        
+        public static void SafeCreateDirectory(string filePath)
+        {
+            var directoryName = Path.GetDirectoryName(filePath);
+            if (!Directory.Exists(directoryName))
+            {
+                Directory.CreateDirectory(directoryName);
+            }
+        }
     }
 }

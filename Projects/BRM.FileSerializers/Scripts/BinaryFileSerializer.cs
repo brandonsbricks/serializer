@@ -45,20 +45,11 @@ namespace BRM.FileSerializers
         /// </summary>
         public void Write<TModel>(string filePath, TModel model)
         {
-            SafeCreateDirectory(filePath);
+            FileUtilities.SafeCreateDirectory(filePath);
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 var data = _serializer.AsBinary(model);
                 stream.Write(data, 0, data.Length);
-            }
-        }
-
-        private void SafeCreateDirectory(string filePath)
-        {
-            var directoryName = Path.GetDirectoryName(filePath);
-            if (!Directory.Exists(directoryName))
-            {
-                Directory.CreateDirectory(directoryName);
             }
         }
     }

@@ -39,6 +39,30 @@ namespace BRM.SerializationServices.TestSuite
         }
 
         [Theory]
+        [InlineData("D://NoFolder/NoNestedFolder/zzz.json", "value")]
+        public void DirectoryCreation_NoExceptions(string completeFilePath, string toSerialize)
+        {
+            //setup to ensure the directory is created on this run
+            string directoryName = Path.GetDirectoryName(completeFilePath);
+            if (Directory.Exists(directoryName))
+            {
+                Directory.Delete(directoryName);
+            }
+
+            var debugger = new ConsoleDebugger();
+            var jsonSerializer = new NewtonsoftJsonSerializer();
+            var fileSerializer = new TextFileSerializer(jsonSerializer, debugger);
+            try
+            {
+                fileSerializer.Write(completeFilePath, toSerialize);
+            }
+            catch (Exception e)
+            {
+                Assert.False(true);
+            }
+        }
+
+        [Theory]
         [InlineData("test1.dat", new byte[]{0,1,0,1,1,1,001,0110})]
         [InlineData("test1.dat", new byte[]{0,1,0,1,1,1,001,0110,000000001,0100})]
         public void BinaryPrePostSerialization_AreEqual(string relativeFilePath, byte[] toSerialize)
